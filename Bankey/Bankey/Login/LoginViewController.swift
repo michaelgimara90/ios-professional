@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LoginViewController.swift
 //  Bankey
 //
 //  Created by Michael Gimara on 09/02/2023.
@@ -7,11 +7,21 @@
 
 import UIKit
 
+protocol LoginViewControllerDelegate: AnyObject {
+    func didLogin()
+}
+
+protocol LogoutDelegate: AnyObject {
+    func didLogout()
+}
+
 class LoginViewController: UIViewController {
     
     let loginView = LoginView()
     let signInButton = UIButton(type: .system)
     let errorMessageLabel = UILabel()
+    
+    weak var delegate: LoginViewControllerDelegate?
     
     var username: String? {
         loginView.usernameTextField.text
@@ -26,6 +36,14 @@ class LoginViewController: UIViewController {
         
         style()
         layout()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        loginView.usernameTextField.text?.removeAll()
+        loginView.passwordTextField.text?.removeAll()
+        signInButton.configuration?.showsActivityIndicator = false
     }
 }
 
@@ -95,6 +113,9 @@ extension LoginViewController {
         
         if username == "Username" && password == "Password" {
             signInButton.configuration?.showsActivityIndicator = true
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { [weak self] timer in
+                self?.delegate?.didLogin()
+            }
         } else {
             configureView(withErrorMessage: "Incorrect Username / Password")
         }
