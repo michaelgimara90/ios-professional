@@ -50,7 +50,6 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     private func style() {
         loginView.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemBackground
         
         signInButton.translatesAutoresizingMaskIntoConstraints = false
         signInButton.configuration = .filled()

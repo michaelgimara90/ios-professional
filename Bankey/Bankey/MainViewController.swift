@@ -17,8 +17,6 @@ class MainViewController: UITabBarController {
     }
     
     private func setupViews() {
-        view.backgroundColor = .systemBackground
-        
         let summaryVC = AccountSummaryViewController()
         let moneyVC = MoveMoneyViewController()
         let moreVC = MoreViewController()
@@ -33,6 +31,7 @@ class MainViewController: UITabBarController {
         
         summaryNC.navigationBar.barTintColor = appColor
         hideNavigationBarLine(summaryNC.navigationBar)
+        //summaryNC.setNavigationBar(color: appColor, hideNavigationBarLine: true)
         
         let tabBarList = [summaryNC, moneyNC, moreNC]
         
