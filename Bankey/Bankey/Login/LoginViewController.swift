@@ -11,10 +11,6 @@ protocol LoginViewControllerDelegate: AnyObject {
     func didLogin()
 }
 
-protocol LogoutDelegate: AnyObject {
-    func didLogout()
-}
-
 class LoginViewController: UIViewController {
     
     let loginView = LoginView()

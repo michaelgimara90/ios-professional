@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         loginViewController.delegate = self
         onboardingContainerViewController.delegate = self
         
+        registerForNotifications()
         setNavigationBar()
         setRootViewController(loginViewController)
         
@@ -35,6 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didLogout), name: .logout, object: nil)
+    }
+    
     private func setNavigationBar() {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithTransparentBackground()
@@ -82,8 +87,8 @@ extension AppDelegate: OnboardingContainerViewControllerDelegate {
     }
 }
 
-extension AppDelegate: LogoutDelegate {
-    func didLogout() {
+extension AppDelegate {
+    @objc func didLogout() {
         setRootViewController(loginViewController)
     }
 }
