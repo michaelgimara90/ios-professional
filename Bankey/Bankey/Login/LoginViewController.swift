@@ -46,7 +46,7 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        animate()
+        animateTitleAndSubtitle()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -171,23 +171,13 @@ extension LoginViewController {
     private func configureView(withErrorMessage errorMessage: String) {
         errorMessageLabel.isHidden = false
         errorMessageLabel.text = errorMessage
-        shakeButton()
-    }
-    
-    private func shakeButton() {
-        let animation = CAKeyframeAnimation()
-        animation.keyPath = "position.x"
-        animation.values = [0, 10, -10, 10, 0]
-        animation.keyTimes = [0, 0.16, 0.5, 0.83, 1]
-        animation.duration = 0.4
-        animation.isAdditive = true
-        signInButton.layer.add(animation, forKey: "shake")
+        shakeSignInButton()
     }
 }
 
 // MARK: Animations
 extension LoginViewController {
-    private func animate() {
+    private func animateTitleAndSubtitle() {
         let duration: TimeInterval = 0.8
         
         let animator1 = UIViewPropertyAnimator(duration: duration, curve: .easeInOut) {
@@ -209,6 +199,16 @@ extension LoginViewController {
             self.view.layoutIfNeeded()
         }
         animator3.startAnimation(afterDelay: 0.2)
+    }
+    
+    private func shakeSignInButton() {
+        let animation = CAKeyframeAnimation()
+        animation.keyPath = "position.x"
+        animation.values = [0, 10, -10, 10, 0]
+        animation.keyTimes = [0, 0.16, 0.5, 0.83, 1]
+        animation.duration = 0.4
+        animation.isAdditive = true
+        signInButton.layer.add(animation, forKey: "shake")
     }
 }
 
