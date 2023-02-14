@@ -13,8 +13,10 @@ class AccountSummaryViewController: UIViewController {
     var headerViewModel = AccountSummaryHeaderView.ViewModel(welcomeMessage: "Welcome", name: "", date: Date())
     var accountCellViewModels: [AccountSummaryCell.ViewModel] = []
     
+    // Components
     var tableView = UITableView()
     var headerView = AccountSummaryHeaderView(frame: .zero)
+    let refreshControl = UIRefreshControl()
     
     lazy var logoutBarButtonItem: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutBarButtonTapped))
@@ -33,6 +35,7 @@ extension AccountSummaryViewController {
         setupNavigationBar()
         setupTableView()
         setupTableHeaderView()
+        setupRefreshControl()
         fetchData()
     }
     
@@ -67,6 +70,12 @@ extension AccountSummaryViewController {
         tableView.tableHeaderView = headerView
         headerView.configure(with: headerViewModel)
     }
+    
+    private func setupRefreshControl() {
+        refreshControl.tintColor = appColor
+        refreshControl.addTarget(self, action: #selector(refreshContent), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
 }
 
 extension AccountSummaryViewController: UITableViewDataSource {
@@ -85,14 +94,7 @@ extension AccountSummaryViewController: UITableViewDataSource {
 
 extension AccountSummaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-}
-
-// MARK: Actions
-extension AccountSummaryViewController {
-    @objc func logoutBarButtonTapped(sender: UIBarButtonItem) {
-        NotificationCenter.default.post(name: .logout, object: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
@@ -126,6 +128,7 @@ extension AccountSummaryViewController {
         dispatchGroup.notify(queue: .main) {
             self.headerView.configure(with: self.headerViewModel)
             self.tableView.reloadData()
+            self.tableView.refreshControl?.endRefreshing()
         }
     }
     
@@ -145,5 +148,16 @@ extension AccountSummaryViewController {
                 balance: $0.amount
             )
         }
+    }
+}
+
+// MARK: Actions
+extension AccountSummaryViewController {
+    @objc func logoutBarButtonTapped(sender: UIBarButtonItem) {
+        NotificationCenter.default.post(name: .logout, object: nil)
+    }
+    
+    @objc func refreshContent(sender: UIRefreshControl) {
+        fetchData()
     }
 }
