@@ -31,6 +31,8 @@
 		7D6E844F299BD42F00371011 /* AccountSummaryViewController+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E844E299BD42F00371011 /* AccountSummaryViewController+Networking.swift */; };
 		7D6E8453299BEB1F00371011 /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E8452299BEB1F00371011 /* ProfileTests.swift */; };
 		7D6E8455299BEC8A00371011 /* AccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E8454299BEC8A00371011 /* AccountTests.swift */; };
+		7D6E8457299BFA0500371011 /* SkeletonLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E8456299BFA0500371011 /* SkeletonLoadable.swift */; };
+		7D6E8459299BFAB700371011 /* SkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E8458299BFAB700371011 /* SkeletonCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		7D6E844E299BD42F00371011 /* AccountSummaryViewController+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSummaryViewController+Networking.swift"; sourceTree = "<group>"; };
 		7D6E8452299BEB1F00371011 /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
 		7D6E8454299BEC8A00371011 /* AccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTests.swift; sourceTree = "<group>"; };
+		7D6E8456299BFA0500371011 /* SkeletonLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLoadable.swift; sourceTree = "<group>"; };
+		7D6E8458299BFAB700371011 /* SkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +194,8 @@
 			isa = PBXGroup;
 			children = (
 				7D6E8430299A7A6A00371011 /* AccountSummaryCell.swift */,
+				7D6E8456299BFA0500371011 /* SkeletonLoadable.swift */,
+				7D6E8458299BFAB700371011 /* SkeletonCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -340,6 +346,8 @@
 				7D6E844F299BD42F00371011 /* AccountSummaryViewController+Networking.swift in Sources */,
 				7D6E84062995664200371011 /* LoginViewController.swift in Sources */,
 				7D6E8446299B8C6700371011 /* NotificationName.swift in Sources */,
+				7D6E8459299BFAB700371011 /* SkeletonCell.swift in Sources */,
+				7D6E8457299BFA0500371011 /* SkeletonLoadable.swift in Sources */,
 				7D6E8433299ABE7400371011 /* Decimal+Utils.swift in Sources */,
 				7D6E8431299A7A6B00371011 /* AccountSummaryCell.swift in Sources */,
 				7D6E841D299902D200371011 /* OnboardingViewController.swift in Sources */,
