@@ -13,7 +13,7 @@ class ResetPasswordViewController: UIViewController {
     let newPasswordTextField = PasswordTextField(placeholder: "New password")
     let passwordStatusView = PasswordStatusView()
     let confirmPasswordTextField = PasswordTextField(placeholder: "Re-enter new password")
-    let resetButton = UIButton(type: .system)
+    let resetPasswordButton = UIButton(type: .system)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,17 +37,17 @@ extension ResetPasswordViewController {
         
         confirmPasswordTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        resetButton.translatesAutoresizingMaskIntoConstraints = false
-        resetButton.configuration = .filled()
-        resetButton.setTitle("Reset password", for: .normal)
-        resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
+        resetPasswordButton.translatesAutoresizingMaskIntoConstraints = false
+        resetPasswordButton.configuration = .filled()
+        resetPasswordButton.setTitle("Reset password", for: .normal)
+        resetPasswordButton.addTarget(self, action: #selector(resetPasswordButtonTapped), for: .touchUpInside)
     }
     
     func layout() {
         stackView.addArrangedSubview(newPasswordTextField)
         stackView.addArrangedSubview(passwordStatusView)
         stackView.addArrangedSubview(confirmPasswordTextField)
-        stackView.addArrangedSubview(resetButton)
+        stackView.addArrangedSubview(resetPasswordButton)
         
         view.addSubview(stackView)
         
@@ -60,8 +60,7 @@ extension ResetPasswordViewController {
 }
 
 extension ResetPasswordViewController {
-    @objc func resetButtonTapped(sender: UIButton) {
-        // TODO:
+    @objc func resetPasswordButtonTapped(sender: UIButton) {
     }
 }
 
