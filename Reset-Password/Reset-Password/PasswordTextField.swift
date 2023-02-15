@@ -17,8 +17,8 @@ class PasswordTextField: UIView {
     
     let placeholderText: String
     
-    init(placeholderText: String) {
-        self.placeholderText = placeholderText
+    init(placeholder: String) {
+        self.placeholderText = placeholder
         
         super.init(frame: .zero)
         
