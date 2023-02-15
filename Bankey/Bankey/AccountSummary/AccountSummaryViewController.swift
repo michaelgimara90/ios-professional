@@ -125,7 +125,9 @@ extension AccountSummaryViewController {
             case .success(let profile):
                 self.configureTableHeaderViewModel(with: profile)
             case .failure(let error):
-                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.displayError(error)
+                }
             }
             dispatchGroup.leave()
         }
@@ -136,7 +138,10 @@ extension AccountSummaryViewController {
             case .success(let accounts):
                 self.configureTableCellViewModels(with: accounts)
             case .failure(let error):
-                print(error.localizedDescription)
+                self.configureTableCellViewModels(with: [])
+                DispatchQueue.main.async {
+                    self.displayError(error)
+                }
             }
             dispatchGroup.leave()
         }
@@ -165,6 +170,30 @@ extension AccountSummaryViewController {
                 balance: $0.amount
             )
         }
+    }
+    
+    private func displayError(_ error: NetworkError) {
+        let title: String
+        let message: String
+        switch error {
+        case .serverError:
+            title = "Server Error"
+            message = "Ensure you are connected to the internet. Please try again."
+        case .decodingError:
+            title = "Decoding Error"
+            message = "We could not process your request. Please try again."
+        }
+        showErrorAlert(title: title, message: message)
+    }
+    
+    private func showErrorAlert(title: String, message: String) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }
 
