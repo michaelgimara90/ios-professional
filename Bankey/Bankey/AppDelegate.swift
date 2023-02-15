@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         registerForNotifications()
         setNavigationBar()
-//        setRootViewController(loginViewController)
-        setRootViewController(mainViewController)
+        setRootViewController(loginViewController)
+        //setRootViewController(mainViewController)
         
         return true
     }
