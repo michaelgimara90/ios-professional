@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D50A089299CCE250054BC00 /* AccountSummaryWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A088299CCE250054BC00 /* AccountSummaryWebService.swift */; };
+		7D50A08D299CD27A0054BC00 /* AccountSummaryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A08C299CD27A0054BC00 /* AccountSummaryViewControllerTests.swift */; };
+		7D50A090299CDB1D0054BC00 /* MockAccountSummaryWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A08F299CDB1D0054BC00 /* MockAccountSummaryWebService.swift */; };
 		7D6E84022995664200371011 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E84012995664200371011 /* AppDelegate.swift */; };
 		7D6E84062995664200371011 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E84052995664200371011 /* LoginViewController.swift */; };
 		7D6E840B2995664300371011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D6E840A2995664300371011 /* Assets.xcassets */; };
@@ -28,7 +31,6 @@
 		7D6E8448299B97AC00371011 /* UITextField+SecureToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E8447299B97AC00371011 /* UITextField+SecureToggle.swift */; };
 		7D6E844B299BB92300371011 /* ShakeyBellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E844A299BB92300371011 /* ShakeyBellView.swift */; };
 		7D6E844D299BD30A00371011 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E844C299BD30A00371011 /* Date+Utils.swift */; };
-		7D6E844F299BD42F00371011 /* AccountSummaryViewController+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E844E299BD42F00371011 /* AccountSummaryViewController+Networking.swift */; };
 		7D6E8453299BEB1F00371011 /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E8452299BEB1F00371011 /* ProfileTests.swift */; };
 		7D6E8455299BEC8A00371011 /* AccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E8454299BEC8A00371011 /* AccountTests.swift */; };
 		7D6E8457299BFA0500371011 /* SkeletonLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E8456299BFA0500371011 /* SkeletonLoadable.swift */; };
@@ -46,6 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D50A088299CCE250054BC00 /* AccountSummaryWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryWebService.swift; sourceTree = "<group>"; };
+		7D50A08C299CD27A0054BC00 /* AccountSummaryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewControllerTests.swift; sourceTree = "<group>"; };
+		7D50A08F299CDB1D0054BC00 /* MockAccountSummaryWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccountSummaryWebService.swift; sourceTree = "<group>"; };
 		7D6E83FE2995664200371011 /* Bankey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bankey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6E84012995664200371011 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D6E84052995664200371011 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -70,7 +75,6 @@
 		7D6E8447299B97AC00371011 /* UITextField+SecureToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+SecureToggle.swift"; sourceTree = "<group>"; };
 		7D6E844A299BB92300371011 /* ShakeyBellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeyBellView.swift; sourceTree = "<group>"; };
 		7D6E844C299BD30A00371011 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
-		7D6E844E299BD42F00371011 /* AccountSummaryViewController+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSummaryViewController+Networking.swift"; sourceTree = "<group>"; };
 		7D6E8452299BEB1F00371011 /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
 		7D6E8454299BEC8A00371011 /* AccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTests.swift; sourceTree = "<group>"; };
 		7D6E8456299BFA0500371011 /* SkeletonLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLoadable.swift; sourceTree = "<group>"; };
@@ -95,6 +99,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D50A087299CCE0B0054BC00 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7D50A088299CCE250054BC00 /* AccountSummaryWebService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		7D50A08E299CDAFF0054BC00 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				7D50A08F299CDB1D0054BC00 /* MockAccountSummaryWebService.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		7D6E83F52995664200371011 = {
 			isa = PBXGroup;
 			children = (
@@ -174,9 +194,9 @@
 			isa = PBXGroup;
 			children = (
 				7D6E8428299A410F00371011 /* AccountSummaryViewController.swift */,
-				7D6E844E299BD42F00371011 /* AccountSummaryViewController+Networking.swift */,
 				7D6E842E299A7A2B00371011 /* Header */,
 				7D6E842F299A7A4300371011 /* Cells */,
+				7D50A087299CCE0B0054BC00 /* Networking */,
 			);
 			path = AccountSummary;
 			sourceTree = "<group>";
@@ -230,6 +250,8 @@
 			children = (
 				7D6E8452299BEB1F00371011 /* ProfileTests.swift */,
 				7D6E8454299BEC8A00371011 /* AccountTests.swift */,
+				7D50A08C299CD27A0054BC00 /* AccountSummaryViewControllerTests.swift */,
+				7D50A08E299CDAFF0054BC00 /* Mocks */,
 			);
 			path = AccountSummary;
 			sourceTree = "<group>";
@@ -343,9 +365,9 @@
 				7D6E8435299ABF2400371011 /* CurrencyFormatter.swift in Sources */,
 				7D6E8448299B97AC00371011 /* UITextField+SecureToggle.swift in Sources */,
 				7D6E844D299BD30A00371011 /* Date+Utils.swift in Sources */,
-				7D6E844F299BD42F00371011 /* AccountSummaryViewController+Networking.swift in Sources */,
 				7D6E84062995664200371011 /* LoginViewController.swift in Sources */,
 				7D6E8446299B8C6700371011 /* NotificationName.swift in Sources */,
+				7D50A089299CCE250054BC00 /* AccountSummaryWebService.swift in Sources */,
 				7D6E8459299BFAB700371011 /* SkeletonCell.swift in Sources */,
 				7D6E8457299BFA0500371011 /* SkeletonLoadable.swift in Sources */,
 				7D6E8433299ABE7400371011 /* Decimal+Utils.swift in Sources */,
@@ -364,8 +386,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D6E8444299AD99900371011 /* CurrencyFormatterTests.swift in Sources */,
+				7D50A090299CDB1D0054BC00 /* MockAccountSummaryWebService.swift in Sources */,
 				7D6E8455299BEC8A00371011 /* AccountTests.swift in Sources */,
 				7D6E8453299BEB1F00371011 /* ProfileTests.swift in Sources */,
+				7D50A08D299CD27A0054BC00 /* AccountSummaryViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

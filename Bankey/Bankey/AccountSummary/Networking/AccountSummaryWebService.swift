@@ -1,11 +1,16 @@
 //
-//  AccountSummaryViewController+Networking.swift
+//  AccountSummaryWebService.swift
 //  Bankey
 //
-//  Created by Michael Gimara on 14/02/2023.
+//  Created by Michael Gimara on 15/02/2023.
 //
 
 import Foundation
+
+protocol AccountSummaryWebServiceProtocol: AnyObject {
+    func fetchProfile(forUserId userId: String, completion: @escaping (Result<Profile, NetworkError>) -> Void)
+    func fetchAccounts(forUserId userId: String, completion: @escaping (Result<[Account], NetworkError>) -> Void)
+}
 
 enum NetworkError: Error {
     case serverError
@@ -36,10 +41,15 @@ struct Account: Codable {
     }
 }
 
-extension AccountSummaryViewController {
+class AccountSummaryWebService: AccountSummaryWebServiceProtocol {
+    
+    static let shared = AccountSummaryWebService()
+    
+    private init() {}
+    
     func fetchProfile(forUserId userId: String, completion: @escaping (Result<Profile, NetworkError>) -> Void) {
         let url = URL(string: "https://fierce-retreat-36855.herokuapp.com/bankey/profile/\(userId)")!
-
+        
         URLSession.shared.dataTask(with: url) { data, response, error in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
