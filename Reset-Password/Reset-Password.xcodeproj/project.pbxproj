@@ -13,6 +13,7 @@
 		7D50A0AA299D17490054BC00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D50A0A8299D17490054BC00 /* LaunchScreen.storyboard */; };
 		7D50A0B3299D1DF90054BC00 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A0B2299D1DF90054BC00 /* PasswordTextField.swift */; };
 		7D50A0B6299D6E410054BC00 /* PasswordCriteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A0B5299D6E410054BC00 /* PasswordCriteriaView.swift */; };
+		7D50A0B8299D7CAA0054BC00 /* PasswordStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A0B7299D7CAA0054BC00 /* PasswordStatusView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		7D50A0AB299D17490054BC00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D50A0B2299D1DF90054BC00 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		7D50A0B5299D6E410054BC00 /* PasswordCriteriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCriteriaView.swift; sourceTree = "<group>"; };
+		7D50A0B7299D7CAA0054BC00 /* PasswordStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStatusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				7D50A0B5299D6E410054BC00 /* PasswordCriteriaView.swift */,
+				7D50A0B7299D7CAA0054BC00 /* PasswordStatusView.swift */,
 			);
 			name = PasswordStatusView;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				7D50A0A2299D17480054BC00 /* ResetPasswordViewController.swift in Sources */,
 				7D50A09E299D17480054BC00 /* AppDelegate.swift in Sources */,
 				7D50A0B6299D6E410054BC00 /* PasswordCriteriaView.swift in Sources */,
+				7D50A0B8299D7CAA0054BC00 /* PasswordStatusView.swift in Sources */,
 				7D50A0B3299D1DF90054BC00 /* PasswordTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
