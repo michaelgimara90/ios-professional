@@ -8,18 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		7D50A09E299D17480054BC00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A09D299D17480054BC00 /* AppDelegate.swift */; };
-		7D50A0A2299D17480054BC00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A0A1299D17480054BC00 /* ViewController.swift */; };
+		7D50A0A2299D17480054BC00 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A0A1299D17480054BC00 /* ResetPasswordViewController.swift */; };
 		7D50A0A7299D17490054BC00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D50A0A6299D17490054BC00 /* Assets.xcassets */; };
 		7D50A0AA299D17490054BC00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D50A0A8299D17490054BC00 /* LaunchScreen.storyboard */; };
+		7D50A0B3299D1DF90054BC00 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A0B2299D1DF90054BC00 /* PasswordTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7D50A09A299D17480054BC00 /* Reset-Password.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reset-Password.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D50A09D299D17480054BC00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7D50A0A1299D17480054BC00 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7D50A0A1299D17480054BC00 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		7D50A0A6299D17490054BC00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D50A0A9299D17490054BC00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D50A0AB299D17490054BC00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D50A0B2299D1DF90054BC00 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +55,8 @@
 			isa = PBXGroup;
 			children = (
 				7D50A09D299D17480054BC00 /* AppDelegate.swift */,
-				7D50A0A1299D17480054BC00 /* ViewController.swift */,
+				7D50A0A1299D17480054BC00 /* ResetPasswordViewController.swift */,
+				7D50A0B2299D1DF90054BC00 /* PasswordTextField.swift */,
 				7D50A0B1299D17BB0054BC00 /* Files */,
 			);
 			path = "Reset-Password";
@@ -139,8 +142,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D50A0A2299D17480054BC00 /* ViewController.swift in Sources */,
+				7D50A0A2299D17480054BC00 /* ResetPasswordViewController.swift in Sources */,
 				7D50A09E299D17480054BC00 /* AppDelegate.swift in Sources */,
+				7D50A0B3299D1DF90054BC00 /* PasswordTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
