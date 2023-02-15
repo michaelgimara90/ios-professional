@@ -86,13 +86,13 @@ extension PasswordTextField {
         // TextField
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: topAnchor),
-            textField.leadingAnchor.constraint(equalToSystemSpacingAfter: lockImageView.trailingAnchor, multiplier: 1)
+            textField.leadingAnchor.constraint(equalToSystemSpacingAfter: lockImageView.trailingAnchor, multiplier: 1),
+            trailingAnchor.constraint(equalToSystemSpacingAfter: textField.trailingAnchor, multiplier: 3)
         ])
         
         // EyeButton
         NSLayoutConstraint.activate([
             eyeButton.centerYAnchor.constraint(equalTo: textField.centerYAnchor),
-            eyeButton.leadingAnchor.constraint(equalToSystemSpacingAfter: textField.trailingAnchor, multiplier: 1),
             eyeButton.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
         
