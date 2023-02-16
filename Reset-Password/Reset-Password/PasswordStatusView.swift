@@ -19,7 +19,7 @@ class PasswordStatusView: UIView {
     let digitCriteriaView = PasswordCriteriaView(text: "digit (0-9)")
     let specialCharacterCriteriaView = PasswordCriteriaView(text: "special character (e.g. !@#$%^)")
     
-    private var shouldResetCriteria: Bool = true
+    var shouldResetCriteria: Bool = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -96,6 +96,26 @@ extension PasswordStatusView {
 
 // MARK: Update Display
 extension PasswordStatusView {
+    func validate(_ text: String) -> Bool {
+        // Check for 3 of 4 criteria
+        let metCriteria = [
+            PasswordCriteria.uppercaseLetterCriteriaMet(text),
+            PasswordCriteria.lowercaseLetterCriteriaMet(text),
+            PasswordCriteria.digitCriteriaMet(text),
+            PasswordCriteria.specialCharacterCriteriaMet(text)
+        ].filter { $0 }
+        
+        return PasswordCriteria.lengthAndNoSpaceCriteriaMet(text) && metCriteria.count >= 3
+    }
+    
+    func reset() {
+        lengthAndNoSpaceCriteriaView.reset()
+        uppercaseLetterCriteriaView.reset()
+        lowercaseLetterCriteriaView.reset()
+        digitCriteriaView.reset()
+        specialCharacterCriteriaView.reset()
+    }
+    
     func updateDisplay(_ text: String) {
         updateLengthAndNoSpaceCriteriaView(forText: text)
         updateUppercaseLetterCriteriaView(forText: text)
@@ -109,6 +129,8 @@ extension PasswordStatusView {
         
         if shouldResetCriteria {
             isLengthAndNoSpaceCriteriaMet ? lengthAndNoSpaceCriteriaView.isCriteriaMet = true : lengthAndNoSpaceCriteriaView.reset()
+        } else {
+            lengthAndNoSpaceCriteriaView.isCriteriaMet = isLengthAndNoSpaceCriteriaMet
         }
     }
     
@@ -117,6 +139,8 @@ extension PasswordStatusView {
         
         if shouldResetCriteria {
             isUppercaseLetterCriteriaMet ? uppercaseLetterCriteriaView.isCriteriaMet = true : uppercaseLetterCriteriaView.reset()
+        } else {
+            uppercaseLetterCriteriaView.isCriteriaMet = isUppercaseLetterCriteriaMet
         }
     }
     
@@ -125,6 +149,8 @@ extension PasswordStatusView {
         
         if shouldResetCriteria {
             isLowercaseLetterCriteriaMet ? lowercaseLetterCriteriaView.isCriteriaMet = true : lowercaseLetterCriteriaView.reset()
+        } else {
+            lowercaseLetterCriteriaView.isCriteriaMet = isLowercaseLetterCriteriaMet
         }
     }
     
@@ -133,6 +159,8 @@ extension PasswordStatusView {
         
         if shouldResetCriteria {
             isDigitCriteriaMet ? digitCriteriaView.isCriteriaMet = true : digitCriteriaView.reset()
+        } else {
+            digitCriteriaView.isCriteriaMet = isDigitCriteriaMet
         }
     }
     
@@ -141,6 +169,8 @@ extension PasswordStatusView {
         
         if shouldResetCriteria {
             isSpecialCharacterCriteriaMet ? specialCharacterCriteriaView.isCriteriaMet = true : specialCharacterCriteriaView.reset()
+        } else {
+            specialCharacterCriteriaView.isCriteriaMet = isSpecialCharacterCriteriaMet
         }
     }
 }

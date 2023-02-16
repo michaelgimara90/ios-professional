@@ -9,9 +9,12 @@ import UIKit
 
 protocol PasswordTextFieldDelegate: AnyObject {
     func editingChanged(_ sender: PasswordTextField)
+    func didEndEditing(_ sender: PasswordTextField)
 }
 
 class PasswordTextField: UIView {
+    
+    typealias PasswordTextFieldValidation = (_ text: String?) -> (isValid: Bool, errorMessage: String)?
     
     let lockImageView = UIImageView(image: UIImage(systemName: "lock.fill"))
     let textField = UITextField()
@@ -20,8 +23,14 @@ class PasswordTextField: UIView {
     let errorMessageLabel = UILabel()
     
     let placeholderText: String
+    var validation: PasswordTextFieldValidation?
     
     weak var delegate: PasswordTextFieldDelegate?
+    
+    var text: String? {
+        get { textField.text }
+        set { textField.text = newValue }
+    }
     
     init(placeholder: String) {
         self.placeholderText = placeholder
@@ -52,6 +61,7 @@ extension PasswordTextField {
         textField.isSecureTextEntry = true
         textField.delegate = self
         textField.keyboardType = .asciiCapable
+        textField.returnKeyType = .done
         textField.attributedPlaceholder = NSAttributedString(
             string: placeholderText,
             attributes: [
@@ -157,9 +167,9 @@ extension PasswordTextField: UITextFieldDelegate {
         return true
     }
     
-    // if implemented, called in place of textFieldDidEndEditing: ?
+    // resign first responder
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
+        delegate?.didEndEditing(self)
     }
     
     // detect - keypress
@@ -179,5 +189,29 @@ extension PasswordTextField: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true) // resign first responder
         return true
+    }
+}
+
+// MARK: Validation
+extension PasswordTextField {
+    @discardableResult func validate() -> Bool {
+        if let validation,
+           let validationResult = validation(text),
+           !validationResult.isValid {
+            showErrorMessage(validationResult.errorMessage)
+            return false
+        }
+        hideErrorMessage()
+        return true
+    }
+    
+    private func showErrorMessage(_ errorMessage: String) {
+        errorMessageLabel.text = errorMessage
+        errorMessageLabel.isHidden = false
+    }
+    
+    private func hideErrorMessage() {
+        errorMessageLabel.text = ""
+        errorMessageLabel.isHidden = true
     }
 }
