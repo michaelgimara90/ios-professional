@@ -13,11 +13,13 @@ class PasswordStatusView: UIView {
     
     let criteriaLabel = UILabel()
     
-    let lengthCriteriaView = PasswordCriteriaView(text: "8-32 characters (no spaces)")
-    let uppercaseCriterialView = PasswordCriteriaView(text: "uppercase letter (A-Z)")
-    let lowercaseCriterialView = PasswordCriteriaView(text: "lowercase letter (a-z)")
+    let lengthAndNoSpaceCriteriaView = PasswordCriteriaView(text: "8-32 characters (no spaces)")
+    let uppercaseLetterCriteriaView = PasswordCriteriaView(text: "uppercase letter (A-Z)")
+    let lowercaseLetterCriteriaView = PasswordCriteriaView(text: "lowercase letter (a-z)")
     let digitCriteriaView = PasswordCriteriaView(text: "digit (0-9)")
     let specialCharacterCriteriaView = PasswordCriteriaView(text: "special character (e.g. !@#$%^)")
+    
+    private var shouldResetCriteria: Bool = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,18 +52,18 @@ extension PasswordStatusView {
         criteriaLabel.lineBreakMode = .byWordWrapping
         criteriaLabel.attributedText = makeCriteriaMessage()
         
-        lengthCriteriaView.translatesAutoresizingMaskIntoConstraints = false
-        uppercaseCriterialView.translatesAutoresizingMaskIntoConstraints = false
-        lowercaseCriterialView.translatesAutoresizingMaskIntoConstraints = false
+        lengthAndNoSpaceCriteriaView.translatesAutoresizingMaskIntoConstraints = false
+        uppercaseLetterCriteriaView.translatesAutoresizingMaskIntoConstraints = false
+        lowercaseLetterCriteriaView.translatesAutoresizingMaskIntoConstraints = false
         digitCriteriaView.translatesAutoresizingMaskIntoConstraints = false
         specialCharacterCriteriaView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func layout() {
-        stackView.addArrangedSubview(lengthCriteriaView)
+        stackView.addArrangedSubview(lengthAndNoSpaceCriteriaView)
         stackView.addArrangedSubview(criteriaLabel)
-        stackView.addArrangedSubview(uppercaseCriterialView)
-        stackView.addArrangedSubview(lowercaseCriterialView)
+        stackView.addArrangedSubview(uppercaseLetterCriteriaView)
+        stackView.addArrangedSubview(lowercaseLetterCriteriaView)
         stackView.addArrangedSubview(digitCriteriaView)
         stackView.addArrangedSubview(specialCharacterCriteriaView)
         
@@ -89,5 +91,56 @@ extension PasswordStatusView {
         attributedText.append(NSAttributedString(string: "criteria when setting your password:", attributes: plainTextAttributes))
         
         return attributedText
+    }
+}
+
+// MARK: Update Display
+extension PasswordStatusView {
+    func updateDisplay(_ text: String) {
+        updateLengthAndNoSpaceCriteriaView(forText: text)
+        updateUppercaseLetterCriteriaView(forText: text)
+        updateLowercaseLetterCriteriaView(forText: text)
+        updateDigitCriteriaView(forText: text)
+        updateSpecialCharacterCriteriaView(forText: text)
+    }
+    
+    private func updateLengthAndNoSpaceCriteriaView(forText text: String) {
+        let isLengthAndNoSpaceCriteriaMet = PasswordCriteria.lengthAndNoSpaceCriteriaMet(text)
+        
+        if shouldResetCriteria {
+            isLengthAndNoSpaceCriteriaMet ? lengthAndNoSpaceCriteriaView.isCriteriaMet = true : lengthAndNoSpaceCriteriaView.reset()
+        }
+    }
+    
+    private func updateUppercaseLetterCriteriaView(forText text: String) {
+        let isUppercaseLetterCriteriaMet = PasswordCriteria.uppercaseLetterCriteriaMet(text)
+        
+        if shouldResetCriteria {
+            isUppercaseLetterCriteriaMet ? uppercaseLetterCriteriaView.isCriteriaMet = true : uppercaseLetterCriteriaView.reset()
+        }
+    }
+    
+    private func updateLowercaseLetterCriteriaView(forText text: String) {
+        let isLowercaseLetterCriteriaMet = PasswordCriteria.lowercaseLetterCriteriaMet(text)
+        
+        if shouldResetCriteria {
+            isLowercaseLetterCriteriaMet ? lowercaseLetterCriteriaView.isCriteriaMet = true : lowercaseLetterCriteriaView.reset()
+        }
+    }
+    
+    private func updateDigitCriteriaView(forText text: String) {
+        let isDigitCriteriaMet = PasswordCriteria.digitCriteriaMet(text)
+        
+        if shouldResetCriteria {
+            isDigitCriteriaMet ? digitCriteriaView.isCriteriaMet = true : digitCriteriaView.reset()
+        }
+    }
+    
+    private func updateSpecialCharacterCriteriaView(forText text: String) {
+        let isSpecialCharacterCriteriaMet = PasswordCriteria.specialCharacterCriteriaMet(text)
+        
+        if shouldResetCriteria {
+            isSpecialCharacterCriteriaMet ? specialCharacterCriteriaView.isCriteriaMet = true : specialCharacterCriteriaView.reset()
+        }
     }
 }

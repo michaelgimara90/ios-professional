@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol PasswordTextFieldDelegate: AnyObject {
+    func editingChanged(_ sender: PasswordTextField)
+}
+
 class PasswordTextField: UIView {
     
     let lockImageView = UIImageView(image: UIImage(systemName: "lock.fill"))
@@ -16,6 +20,8 @@ class PasswordTextField: UIView {
     let errorMessageLabel = UILabel()
     
     let placeholderText: String
+    
+    weak var delegate: PasswordTextFieldDelegate?
     
     init(placeholder: String) {
         self.placeholderText = placeholder
@@ -52,6 +58,7 @@ extension PasswordTextField {
                 NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel
             ]
         )
+        textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         
         eyeButton.translatesAutoresizingMaskIntoConstraints = false
         eyeButton.setImage(UIImage(systemName: "eye.circle"), for: .normal)
@@ -67,7 +74,7 @@ extension PasswordTextField {
         errorMessageLabel.text = "Your password must meet the requirements below."
         errorMessageLabel.numberOfLines = 0
         errorMessageLabel.lineBreakMode = .byWordWrapping
-        errorMessageLabel.isHidden = false
+        errorMessageLabel.isHidden = true
     }
     
     func layout() {
@@ -119,17 +126,58 @@ extension PasswordTextField {
     }
 }
 
-// MARK: UITextFieldDelegate
-extension PasswordTextField: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return true
+// MARK: Actions
+extension PasswordTextField {
+    @objc func textFieldEditingChanged(sender: UITextField) {
+        delegate?.editingChanged(self)
+    }
+    
+    @objc func eyeButtonTapped(sender: UIButton) {
+        textField.isSecureTextEntry.toggle()
+        eyeButton.isSelected.toggle()
     }
 }
 
-// MARK: Actions
-extension PasswordTextField {
-    @objc private func eyeButtonTapped(sender: UIButton) {
-        textField.isSecureTextEntry.toggle()
-        eyeButton.isSelected.toggle()
+// MARK: UITextFieldDelegate
+extension PasswordTextField: UITextFieldDelegate {
+    
+    // return false to disallow editing
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    // became first responder
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+    }
+    
+    // return true to allow editing to stop and to resign first responder status.
+    // return false to disallow the editing session to end
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    // if implemented, called in place of textFieldDidEndEditing: ?
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+    
+    // detect - keypress
+    // return false to not change text
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return true
+    }
+    
+    // called when 'clear' button pressed
+    // return false to ignore
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    // called when 'return' key pressed
+    // return false to ignore
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true) // resign first responder
+        return true
     }
 }

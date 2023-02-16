@@ -30,12 +30,14 @@ extension ResetPasswordViewController {
         stackView.spacing = 20
         
         newPasswordTextField.translatesAutoresizingMaskIntoConstraints = false
+        newPasswordTextField.delegate = self
         
         passwordStatusView.translatesAutoresizingMaskIntoConstraints = false
         passwordStatusView.layer.cornerRadius = 5
         passwordStatusView.clipsToBounds = true
         
         confirmPasswordTextField.translatesAutoresizingMaskIntoConstraints = false
+        confirmPasswordTextField.delegate = self
         
         resetPasswordButton.translatesAutoresizingMaskIntoConstraints = false
         resetPasswordButton.configuration = .filled()
@@ -61,6 +63,19 @@ extension ResetPasswordViewController {
 
 extension ResetPasswordViewController {
     @objc func resetPasswordButtonTapped(sender: UIButton) {
+    }
+}
+
+extension ResetPasswordViewController: PasswordTextFieldDelegate {
+    func editingChanged(_ sender: PasswordTextField) {
+        switch sender {
+        case newPasswordTextField:
+            passwordStatusView.updateDisplay(sender.textField.text ?? "")
+        case confirmPasswordTextField:
+            print("confirmPasswordTextField text: \(sender.textField.text ?? "")")
+        default:
+            break
+        }
     }
 }
 
