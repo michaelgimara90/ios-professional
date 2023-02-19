@@ -8,15 +8,15 @@
 import UIKit
 
 extension UIResponder {
-    private static weak var _currentFirstResponder: UIResponder? = nil
+    private static weak var currentFirstResponder: UIResponder? = nil
     
     public static var firstResponder: UIResponder? {
-        UIResponder._currentFirstResponder = nil
+        UIResponder.currentFirstResponder = nil
         UIApplication.shared.sendAction(#selector(findFirstResponder(sender:)), to: nil, from: nil, for: nil)
-        return UIResponder._currentFirstResponder
+        return UIResponder.currentFirstResponder
     }
     
     @objc private func findFirstResponder(sender: AnyObject) {
-        UIResponder._currentFirstResponder = self
+        UIResponder.currentFirstResponder = self
     }
 }

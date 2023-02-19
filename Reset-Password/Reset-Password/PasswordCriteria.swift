@@ -14,11 +14,11 @@ struct PasswordCriteria {
         lengthCriteriaMet(text) && noSpaceCriteriaMet(text)
     }
     
-    private static func lengthCriteriaMet(_ text: String) -> Bool {
+    static func lengthCriteriaMet(_ text: String) -> Bool {
         text.count >= 8 && text.count <= 32
     }
     
-    private static func noSpaceCriteriaMet(_ text: String) -> Bool {
+    static func noSpaceCriteriaMet(_ text: String) -> Bool {
         text.rangeOfCharacter(from: .whitespaces) == nil
     }
     

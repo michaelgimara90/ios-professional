@@ -90,3 +90,10 @@ extension PasswordCriteriaView {
         imageView.image = circleImage
     }
 }
+
+// MARK: Tests
+extension PasswordCriteriaView {
+    var isCircleImage: Bool { imageView.image == circleImage }
+    var isCheckmarkImage: Bool { imageView.image == checkmarkImage }
+    var isXmarkImage: Bool { imageView.image == xmarkImage }
+}
