@@ -154,7 +154,7 @@ extension LoginViewController {
         }
         
         guard !username.isEmpty, !password.isEmpty else {
-            configureView(withErrorMessage: "Username / Password cannot be black")
+            configureErrorView(withMessage: "Username / Password cannot be blank")
             return
         }
         
@@ -164,13 +164,13 @@ extension LoginViewController {
                 self?.delegate?.didLogin()
             }
         } else {
-            configureView(withErrorMessage: "Incorrect Username / Password")
+            configureErrorView(withMessage: "Incorrect Username / Password")
         }
     }
     
-    private func configureView(withErrorMessage errorMessage: String) {
+    private func configureErrorView(withMessage message: String) {
         errorMessageLabel.isHidden = false
-        errorMessageLabel.text = errorMessage
+        errorMessageLabel.text = message
         shakeSignInButton()
     }
 }
