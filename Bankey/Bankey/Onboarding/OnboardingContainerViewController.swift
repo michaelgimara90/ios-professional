@@ -61,8 +61,6 @@ class OnboardingContainerViewController: UIViewController {
     }
     
     private func setup() {
-        view.backgroundColor = .systemPurple
-        
         addChild(pageViewController)
         view.addSubview(pageViewController.view)
         pageViewController.didMove(toParent: self)
@@ -82,6 +80,8 @@ class OnboardingContainerViewController: UIViewController {
     }
     
     private func style() {
+        view.backgroundColor = .systemPurple
+        
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         nextButton.setTitle("Next", for: .normal)
         nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
