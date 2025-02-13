@@ -29,8 +29,7 @@ class OnboardingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .systemBackground
+
         style()
         layout()
     }
@@ -38,6 +37,8 @@ class OnboardingViewController: UIViewController {
 
 extension OnboardingViewController {
     func style() {
+        view.backgroundColor = .systemBackground
+        
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 20
