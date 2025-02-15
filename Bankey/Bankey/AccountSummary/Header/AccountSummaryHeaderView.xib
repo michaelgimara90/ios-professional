@@ -18,8 +18,8 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="370" height="144"/>
+        <view contentMode="scaleToFill" misplaced="YES" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="370" height="135"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NwQ-G7-xDD">
@@ -68,13 +68,13 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="NwQ-G7-xDD" secondAttribute="trailing" constant="16" id="JlJ-Nr-BuM"/>
-                <constraint firstItem="NwQ-G7-xDD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="kK3-DS-vbU"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="NwQ-G7-xDD" secondAttribute="trailing" priority="999" constant="16" id="JlJ-Nr-BuM"/>
+                <constraint firstItem="NwQ-G7-xDD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="kK3-DS-vbU"/>
                 <constraint firstItem="NwQ-G7-xDD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="wAt-bh-28V"/>
-                <constraint firstAttribute="bottom" secondItem="NwQ-G7-xDD" secondAttribute="bottom" constant="16" id="yDT-rv-foc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="NwQ-G7-xDD" secondAttribute="bottom" priority="999" constant="-18" id="yDT-rv-foc"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="138.93129770992365" y="19.718309859154932"/>
+            <point key="canvasLocation" x="138.93129770992365" y="16.549295774647888"/>
         </view>
     </objects>
     <resources>
